@@ -1,0 +1,27 @@
+div {
+    height: 100vh;
+    width: 100vw;
+    background-image: url("https://media.giphy.com/media/245otAim3vNmy59B4d/giphy.gif");
+    background-size: cover;
+    p {
+        text-align: center;
+        padding-top: 10vh;
+        margin: 0px;
+
+        a {
+            font-size: xx-large;
+            background-color: yellow;
+            text-decoration: none;
+            color: green;
+            padding: 1em;
+            vertical-align: middle;
+            transition: background-color 0.5s, color 0.5s;
+            border-radius: 0.5em;
+        }
+        a:hover {
+            background-color: green;
+            color: yellow;
+        }
+    }
+}   
+
