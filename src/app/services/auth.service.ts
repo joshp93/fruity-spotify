@@ -19,7 +19,7 @@ export class AuthService {
     return "https://accounts.spotify.com/authorize?" +
       `client_id=${environment.clientId}&` +
       "response_type=token&" +
-      `redirect_uri=http://localhost:4200/auth&` +
+      `redirect_uri=${location.origin}/auth&` +
       `state=${this.generateState()}&` +
       `scope=${environment.scopes}`
   }
