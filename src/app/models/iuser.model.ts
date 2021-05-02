@@ -1,4 +1,4 @@
-export interface IMe {
+export interface IUser {
     display_name: string;
     email: string;
     external_urls: object;

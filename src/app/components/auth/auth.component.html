@@ -1,3 +1,8 @@
 <div>
-    <p *ngIf="error">{{ error }}</p>
+    <p id="error" *ngIf="error">There was an error, for full details see the console log...
+        <br>
+        <br>
+        {{ error }}
+    </p>
+    <p *ngIf="!error">Doing some shazamzapops... Please twiddle</p>
 </div>

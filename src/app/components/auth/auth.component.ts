@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -10,12 +10,10 @@ import { AuthService } from 'src/app/services/auth.service';
 export class AuthComponent implements OnInit {
   error: string;
 
-  constructor(private route: ActivatedRoute, private authService: AuthService) {
-    this.route.queryParams.subscribe(params => {
-      this.authService.getTokenFromCode(params.code, params.state)
-        .catch((reason) => {
-          this.error = reason;
-        });
+  constructor(private route: ActivatedRoute, private authService: AuthService, router: Router) {
+    this.route.fragment.subscribe(fragment => {
+      this.authService.storeToken(fragment);
+      router.navigate(["../home"], { relativeTo: this.route });
     });
   }
 

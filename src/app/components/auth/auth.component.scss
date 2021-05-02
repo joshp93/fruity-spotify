@@ -4,4 +4,16 @@ div {
     background-image: url("https://media.giphy.com/media/l1sEMKWSfRzEbU5OX8/giphy.gif");
     background-repeat: no-repeat;
     background-size: cover;
+    padding-top: 10vh;
+    p {
+        background-color: green;
+        border-radius: 0.5em;
+        font-size: xx-large;
+        width: 80vw;
+        margin-left: 10vw;
+        text-align: center;
+    }
+    #error {
+        background-color: red;
+    }
 }
