@@ -31,12 +31,12 @@ export class SpotifyService {
     });
   }
 
-  getTopTracks(limit: number): Promise<string | PagingObject> {
+  getTopTracks(limit: number, timeRange: string): Promise<string | PagingObject> {
     return new Promise<string | PagingObject>((resolve, reject) => {
 
       const headers = new HttpHeaders().set("Authorization", "Bearer " + this.memoryStorageService.token.access_token);
       const params = new HttpParams()
-        .set("time_range", "long_term")
+        .set("time_range", timeRange)
         .set("limit", limit.toString());
 
       this.httpClient.get<PagingObject>("https://api.spotify.com/v1/me/top/tracks", { headers: headers, params: params }).subscribe(
@@ -51,12 +51,12 @@ export class SpotifyService {
     });
   }
 
-  getTopArtists(limit: number): Promise<string | PagingObject> {
+  getTopArtists(limit: number, timeRange: string): Promise<string | PagingObject> {
     return new Promise<string | PagingObject>((resolve, reject) => {
 
       const headers = new HttpHeaders().set("Authorization", "Bearer " + this.memoryStorageService.token.access_token);
       const params = new HttpParams()
-        .set("time_range", "long_term")
+        .set("time_range", timeRange)
         .set("limit", limit.toString());
 
       this.httpClient.get<PagingObject>("https://api.spotify.com/v1/me/top/artists", { headers: headers, params: params }).subscribe(

@@ -1,20 +1,23 @@
 <div class="content" *ngIf="user">
-    <h1>Good day to you {{ user.display_name }} 🎵</h1>
     <img [src]="user.images[0].url" [alt]="user.display_name">
+    <h1>🎵🍉Good day to you {{ user.display_name }}🍉🎵</h1>
+    <p>Let's take a glance at your spotify listening trends shall we? We promise not to judge...</p>
+    <br />
+    <p>Over the last month you've really been digging these badgers 🦡</p>
     <div class="tops">
-        <div class="top" *ngIf="topArtist">
-            <h2>Your top {{ topArtist.type }}</h2>
-            <div>
-                <img [src]="topArtist.images[0].url" [alt]="topArtist.name" (mouseover)="play(topTrackForTopArtist.preview_url)" (mouseout)="stop()">
-                <h3>{{ topArtist.name }}</h3>
-            </div>
-        </div>
-        <div class="top" *ngIf="topTrack">
-            <h2>Your top {{ topTrack.type }}</h2>
-            <div>
-                <img [src]="topTrack.album.images[0].url" [alt]="topTrack.album.name" (mouseover)="play(topTrack.preview_url)" (mouseout)="stop()">
-                <h3>{{ topTrack.name }} - {{ topTrack.album.name }}</h3>
-            </div>
-        </div>
+        <app-tile *ngIf="shortTermTopArtist && shortTermTopTrackForTopArtist" title="Your top" [artist]="shortTermTopArtist" [trackPreview]="shortTermTopTrackForTopArtist.preview_url"></app-tile>
+        <app-tile *ngIf="shortTermTopTrack" title="Your top" [track]="shortTermTopTrack" [trackPreview]="shortTermTopTrack.preview_url"></app-tile>
+    </div>
+    <br />
+    <p>For the last 6 months you've been squidding with these kids 🦑 (no kidding!)</p>
+    <div class="tops">
+        <app-tile *ngIf="mediumTermTopArtist && mediumTermTopTrackForTopArtist" title="Your top" [artist]="mediumTermTopArtist" [trackPreview]="mediumTermTopTrackForTopArtist.preview_url"></app-tile>
+        <app-tile *ngIf="mediumTermTopTrack" title="Your top" [track]="mediumTermTopTrack" [trackPreview]="mediumTermTopTrack.preview_url"></app-tile>
+    </div>
+    <br />
+    <p>And finally, Your all time favourites 💕🤟...</p>
+    <div class="tops">
+        <app-tile *ngIf="longTermTopArtist && longTermTopTrackForTopArtist" title="Your top" [artist]="longTermTopArtist" [trackPreview]="longTermTopTrackForTopArtist.preview_url"></app-tile>
+        <app-tile *ngIf="longTermTopTrack" title="Your top" [track]="longTermTopTrack" [trackPreview]="longTermTopTrack.preview_url"></app-tile>
     </div>
 </div>

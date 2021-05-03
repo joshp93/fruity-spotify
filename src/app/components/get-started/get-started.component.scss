@@ -1,27 +1,30 @@
 div {
-    height: 100vh;
-    width: 100vw;
-    background-image: url("https://media.giphy.com/media/245otAim3vNmy59B4d/giphy.gif");
-    background-size: cover;
-    p {
+    padding-top: 10vh;
+    h3 {
+        margin: none;
+        font-size: large;
+        padding-left: 10vw;
+    }
+    .button {
         text-align: center;
-        padding-top: 10vh;
         margin: 0px;
-
+        padding-top: 1em;
         a {
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
             font-size: xx-large;
             background-color: yellow;
             text-decoration: none;
             color: green;
             padding: 1em;
             vertical-align: middle;
-            transition: background-color 0.5s, color 0.5s;
+            transition: background-color 0.5s, color 0.5s, box-shadow 0.3s;
             border-radius: 0.5em;
         }
         a:hover {
             background-color: green;
             color: yellow;
+            box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px,
+                rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
         }
     }
-}   
-
+}

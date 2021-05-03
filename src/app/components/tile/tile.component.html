@@ -1,0 +1,14 @@
+<div class="tile" *ngIf="track">
+    <h2>{{ title + ' ' + track.type }}</h2>
+    <div>
+        <img [src]="track.album.images[0].url" [alt]="track.album.name" (mouseover)="play(trackPreview)" (mouseout)="stop()">
+        <h3>{{ track.name }} - {{ track.album.name }}</h3>
+    </div>
+</div>
+<div class="tile" *ngIf="artist">
+    <h2>{{ title + ' ' + artist.type }}</h2>
+    <div>
+        <img [src]="artist.images[0].url" [alt]="artist.name" (mouseover)="play(trackPreview)" (mouseout)="stop()">
+        <h3>{{ artist.name }}</h3>
+    </div>
+</div>

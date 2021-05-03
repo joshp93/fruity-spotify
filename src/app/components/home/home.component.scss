@@ -1,29 +1,25 @@
 .content {
     width: 80vw;
-    margin-top: 10vh;
+    height: 100vh;
+    padding-top: 10vh;
     margin-left: 10vw;
     img {
         box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-        transition: box-shadow 0.3s;
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+        max-width: 40vw;
+        min-width: 20vw;
+        height: auto;
     }
-
+    h1 {
+        text-align: center;
+    }
+    p {
+        font-size: large;
+    }
     .tops {
         display: flex;
         flex-direction: row;
-        .top {
-            padding: 1em;
-        }
-        .top:hover {
-            cursor: pointer;
-            img {
-                box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px,
-                    rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
-            }
-        }
-    }
-
-    h3 {
-        margin-top: 0em;
-        padding-top: 0em;
     }
 }

@@ -13,11 +13,15 @@ import { SpotifyService } from 'src/app/services/spotify.service';
 })
 export class HomeComponent implements OnInit {
   user: User
-  topArtist: Artist;
-  topTrackForTopArtist: Track;
-  topTrack: Track;
-  audio: HTMLAudioElement;
-  playing: boolean;
+  shortTermTopArtist: Artist;
+  shortTermTopTrackForTopArtist: Track;
+  shortTermTopTrack: Track;
+  mediumTermTopArtist: Artist;
+  mediumTermTopTrackForTopArtist: Track;
+  mediumTermTopTrack: Track;
+  longTermTopArtist: Artist;
+  longTermTopTrackForTopArtist: Track;
+  longTermTopTrack: Track;
 
   constructor(private spotifyService: SpotifyService) { }
 
@@ -25,30 +29,47 @@ export class HomeComponent implements OnInit {
     this.spotifyService.getMe()
       .then((user: User) => {
         this.user = user;
-
-        this.spotifyService.getTopArtists(1)
-          .then((results: PagingObject) => {
-            this.topArtist = <Artist>results.items[0];
-            this.spotifyService.getArtistTopTracks(this.topArtist.id)
-              .then((result: TracksObject) => this.topTrackForTopArtist = result.tracks[0]);
-          });
-
-        this.spotifyService.getTopTracks(1)
-          .then((results: PagingObject) => this.topTrack = <Track>results.items[0]);
+  
+        this.getShortTerm();
+        this.getMediumTerm();
+        this.getLongTerm();
       });
   }
 
-  play(url: string) {
-    if (this.playing) return;
+  getShortTerm() {
+    this.spotifyService.getTopArtists(1, "short_term")
+      .then((results: PagingObject) => {
+        this.shortTermTopArtist = <Artist>results.items[0];
+        this.spotifyService.getArtistTopTracks(this.shortTermTopArtist.id)
+          .then((result: TracksObject) => this.shortTermTopTrackForTopArtist = result.tracks[0]);
+      });
 
-    this.audio = new Audio(url);
-    this.audio.play()
-      .then(() => this.playing = true)
-      .catch(() => {});
+    this.spotifyService.getTopTracks(1, "short_term")
+      .then((results: PagingObject) => this.shortTermTopTrack = <Track>results.items[0]);
   }
 
-  stop() {
-    this.audio.pause();
-    this.playing = false;
+  getMediumTerm() {
+    this.spotifyService.getTopArtists(1, "medium_term")
+      .then((results: PagingObject) => {
+        this.mediumTermTopArtist = <Artist>results.items[0];
+        this.spotifyService.getArtistTopTracks(this.mediumTermTopArtist.id)
+          .then((result: TracksObject) => this.mediumTermTopTrackForTopArtist = result.tracks[0]);
+      });
+
+    this.spotifyService.getTopTracks(1, "medium_term")
+      .then((results: PagingObject) => this.mediumTermTopTrack = <Track>results.items[0]);
   }
+
+  getLongTerm() {
+    this.spotifyService.getTopArtists(1, "long_term")
+      .then((results: PagingObject) => {
+        this.longTermTopArtist = <Artist>results.items[0];
+        this.spotifyService.getArtistTopTracks(this.longTermTopArtist.id)
+          .then((result: TracksObject) => this.longTermTopTrackForTopArtist = result.tracks[0]);
+      });
+
+    this.spotifyService.getTopTracks(1, "long_term")
+      .then((results: PagingObject) => this.longTermTopTrack = <Track>results.items[0]);
+  }
+
 }
